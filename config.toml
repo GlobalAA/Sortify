@@ -1,0 +1,12 @@
+[foldersAssociation]
+PNG=".png"
+JPG=".jpg"
+JPEG=".jpeg"
+WEBP=".webp"
+SVG=".svg"
+
+[charsets]
+lowerEmphasis=true
+dash=true
+number=true
+onlyLowerCase=true
