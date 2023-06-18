@@ -1,12 +1,12 @@
 package config
 
 import (
+	"fmt"
 	"log"
+	"os"
 
 	"github.com/BurntSushi/toml"
 )
-
-const config_file = "config.toml"
 
 type Config struct {
 	FolderAssociation FolderAssociation `toml:"foldersAssociation"`
@@ -33,9 +33,29 @@ func New() *Config {
 }
 
 func (c *Config) Read() *Config {
+	dirname, err := os.UserHomeDir()
+	if err != nil {
+		log.Fatal(err)
+	}
+	config_file := fmt.Sprintf("%s/Sortify/config.toml", dirname)
 	var conf Config
 	if _, err := toml.DecodeFile(config_file, &conf); err != nil {
 		log.Fatal(err)
+	}
+
+	associationMap := map[string]string{
+		"PNG":  conf.FolderAssociation.PNG,
+		"JPG":  conf.FolderAssociation.JPG,
+		"JPEG": conf.FolderAssociation.JPEG,
+		"WEBP": conf.FolderAssociation.WEBP,
+		"SVG":  conf.FolderAssociation.SVG,
+	}
+
+	for _, value := range associationMap {
+		if len(value) <= 0 {
+			fmt.Println("Your configuration is corrupted!")
+			os.Exit(0)
+		}
 	}
 
 	return &conf
