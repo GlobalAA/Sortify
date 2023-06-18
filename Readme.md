@@ -1,10 +1,11 @@
-### О сортировке
-Sortify — это простой и быстрый сортировщик файлов.
+About Sortify
+Sortify is a simple and fast sorter for your files.
 
-### Как начать использовать
-- Сначала создайте каталог _data и поместите файлы для сортировки
-- Затем просто запустите файл sortify и все
+How to start using
 
-### Настройки
-- foldersAssociation — укажите, какие файлы будут помещаться в какую папку
-- charsets - указать какие символы будут в имени файла
+First, create a _data directory and place the files to sort
+Then just run the sortify file in and that's it
+
+Settings
+foldersAssociation - specify which files will go to which folder
+charsets - specify what characters will be in the file name
